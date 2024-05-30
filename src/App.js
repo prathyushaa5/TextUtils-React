@@ -27,14 +27,13 @@ function App() {
   document.body.classList.remove('bg-secondary');
   document.body.classList.remove('bg-primary');
   }
-  const toggleMode=(cls)=>{
-    removeBodyClasses();
-    document.body.classList.add('bg-'+cls);
+  const toggleMode=()=>{
+    
      if(mode==='light'){
       setMode("dark");
       setTextMode("light");
       showAlert("Dark mode has been activated","success");
-      document.body.style.backgroundColor=cls;
+      document.body.style.backgroundColor='black';
       document.body.style.color="white"
       setInterval(()=>{  document.title="DARK MODE"},1500)
     
