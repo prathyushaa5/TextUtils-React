@@ -60,13 +60,10 @@ export default function TextForm(Props) {
     <>
     <div className="container">
     <label htmlFor="exampleFormControlTextarea1" className="form-label"><h1>{Props.title}</h1></label>
-    <button class="btn btn-primary mx-3 mt-3" onClick={() => colorchange("blue")}>Blue</button>
-    <button class="btn btn-secondary mx-3 mt-3" onClick={() => colorchange("grey")}>Grey</button>
-    <button class="btn btn-success mx-3 mt-3" onClick={() => colorchange("green")}>Green</button>
-    <button class="btn btn-danger mx-3 mt-3" onClick={() => colorchange("red")}>Red</button>
+    
   
 
-  <textarea className="form-control" id="exampleFormControlTextarea1" onChange={handleOnChange} rows="3" value={text}></textarea>
+  <textarea className="form-control" id="exampleFormControlTextarea1" onChange={handleOnChange} rows="3" value={text} style={{backgroundColor:Props.mode==='dark'?'darkcyan':'white'}}></textarea>
   <button className="btn btn-primary mx-3 mt-3 " onClick={handleUpClick}> Convert To UpperCase</button>
   <button className="btn btn-primary mx-3 mt-3" onClick={handleToClick}> Convert To Lowercase</button>
   <button className="btn btn-primary mx-3 mt-3" onClick={handleClearClick}> Clear</button> 
@@ -76,8 +73,13 @@ export default function TextForm(Props) {
   
     <div className="container my-3">
         <h1>Your text Summary</h1>
-            <p> {(text.split(" ")).length} words,{text.length} characters</p>
-            <p>{0.008*(text.split(" ")).length} Minutes </p>
+            <p> {(text.split(" ")).filter((element)=>{
+            return element.length!=0
+            }).length} words,{text.length} characters</p>
+            <p>{0.008*(text.split(" ")).filter((element)=>{
+              return element.length!=0
+            }).
+              length} Minutes </p>
             <p>{text.length>0?text:"Enter something to preview"}</p>
     </div>
 
